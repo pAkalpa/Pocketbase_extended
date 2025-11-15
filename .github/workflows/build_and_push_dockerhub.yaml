@@ -51,6 +51,7 @@ jobs:
           context: .
           push: true
           file: ./Dockerfile
+          platforms: linux/amd64,linux/arm64,linux/arm/v7
           tags: |
             ${{ secrets.DH_REGISTRY }}/pbe:${{ steps.set-tag.outputs.tag }}
             ${{ secrets.DH_REGISTRY }}/pbe:latest
@@ -59,6 +60,8 @@ jobs:
     name: Create GitHub Release
     runs-on: ubuntu-latest
     needs: build-and-push
+    permissions:
+      contents: write
     steps:
       - name: Create Release
         uses: softprops/action-gh-release@v2

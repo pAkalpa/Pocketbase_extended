@@ -1,6 +1,11 @@
 ARG GO_IMAGE=golang:1.25.3-alpine3.22
 FROM ${GO_IMAGE} AS builder
 
+# these are automatically set by Docker Buildx for multi-arch builds
+ARG TARGETOS
+ARG TARGETARCH
+ARG TARGETVARIANT
+
 WORKDIR /src
 
 # download modules first (leverages Docker cache)
@@ -9,7 +14,7 @@ RUN go mod download
 
 # copy source and build statically
 COPY . .
-RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags='-s -w' -o /out/pb-app
+RUN CGO_ENABLED=0 GOOS=${TARGETOS} GOARCH=${TARGETARCH} GOARM=${TARGETVARIANT#v} go build -ldflags='-s -w' -o /out/pb-app
 
 ## -- Final image
 FROM alpine:3.19 AS runtime

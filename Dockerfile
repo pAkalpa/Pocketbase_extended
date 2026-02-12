@@ -1,4 +1,4 @@
-ARG GO_IMAGE=golang:1.25.3-alpine3.22
+ARG GO_IMAGE=golang:1.26.0-alpine3.22
 FROM ${GO_IMAGE} AS builder
 
 # these are automatically set by Docker Buildx for multi-arch builds

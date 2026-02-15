@@ -2,7 +2,7 @@ module pb_extended
 
 go 1.26.0
 
-require github.com/pocketbase/pocketbase v0.36.2
+require github.com/pocketbase/pocketbase v0.36.3
 
 require (
 	filippo.io/edwards25519 v1.1.0 // indirect
@@ -28,7 +28,7 @@ require (
 	github.com/spf13/pflag v1.0.10 // indirect
 	github.com/stretchr/testify v1.11.1 // indirect
 	golang.org/x/crypto v0.48.0 // indirect
-	golang.org/x/exp v0.0.0-20260211191109-2735e65f0518 // indirect
+	golang.org/x/exp v0.0.0-20260212183809-81e46e3db34a // indirect
 	golang.org/x/image v0.36.0 // indirect
 	golang.org/x/net v0.50.0 // indirect
 	golang.org/x/oauth2 v0.35.0 // indirect
